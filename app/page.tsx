@@ -120,7 +120,7 @@ export default function Home() {
       <div id="contact-us" className="what-we-do text-center mx-auto w-4/5 my-10 max-sm:w-full">
         <form action="#">
               <h2 className="text-3xl font-bold">Choose a date on the calendar to book now!</h2>
-          <div className="flex mb-1.5">
+          <div className="flex mb-1.5 max-sm:flex-col max-sm:gap-3 max-sm:items-center">
             <div className="flex flex-col gap-4 mx-auto w-2/5 max-sm:w-full max-sm:px-4">
               <input type="email" placeholder="Enter Email Address" className="border-2 border-fuchsia-900 rounded-2xl p-4" />
               <textarea name="" id="" placeholder="Enter the description" className="border-2 border-fuchsia-900 rounded-2xl p-4" rows={7}></textarea>
