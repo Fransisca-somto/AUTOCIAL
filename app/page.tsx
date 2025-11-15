@@ -1,13 +1,20 @@
 'use client';
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+
+type ValuePiece = Date | null;
+
+type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
+  const [value, onChange] = useState<Value>(new Date());
   // Check if the system prefers dark mode
+
   useEffect(() => {
     const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
     if (prefersDarkMode) {
       console.log('System theme is dark mode.');
       console.log(darkMode)
@@ -18,6 +25,10 @@ export default function Home() {
     }
   }, []);
 
+  const handleBookings = () => {
+    console.log("Booking date selected:", value);
+    alert(`You have booked the date: ${value instanceof Date ? value.toDateString() : ''}`);
+  };
 
   return (
     <div style={{ width: '100%', height: '600px', position: 'relative' }}>
@@ -107,12 +118,24 @@ export default function Home() {
 
       {/* Contact Us Page */}
       <div id="contact-us" className="what-we-do text-center mx-auto w-4/5 my-10 max-sm:w-full">
-        <form action="#" className="flex flex-col gap-4 w-2/5 mx-auto max-sm:w-full max-sm:px-4">
-          <h2 className="text-3xl font-bold">Contact Us</h2>
-          <input type="Text" placeholder="Enter project title" className="border-2 border-fuchsia-900 rounded-2xl p-4" />
-          <textarea name="" id="" placeholder="Enter the description" className="border-2 border-fuchsia-900 rounded-2xl p-4" rows={6}></textarea>
-          <button className="get-started self-start p-3 px-9 rounded-2xl">Send mail</button>
+        <form action="#">
+              <h2 className="text-3xl font-bold">Choose a date on the calendar to book now!</h2>
+          <div className="flex mb-1.5">
+            <div className="flex flex-col gap-4 mx-auto w-2/5 max-sm:w-full max-sm:px-4">
+              <input type="email" placeholder="Enter Email Address" className="border-2 border-fuchsia-900 rounded-2xl p-4" />
+              <textarea name="" id="" placeholder="Enter the description" className="border-2 border-fuchsia-900 rounded-2xl p-4" rows={7}></textarea>
+            </div>
+            <div>
+              <div className="calenders">
+                <Calendar onChange={onChange} value={value} />
+              </div>
+            </div>
+          </div>
+
+
+          <button onClick={handleBookings} className="get-started self-start p-3 px-9 rounded-2xl">Book Now!!</button>
         </form>
+
       </div>
 
       {/* Footer */}

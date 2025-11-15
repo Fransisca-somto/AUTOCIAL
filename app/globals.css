@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Chicle&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Chicle&display=swap'); */
 @import "tailwindcss";
 
 :root {
@@ -65,7 +65,8 @@ a::after {
   visibility: hidden;
 }
 
-.get-started, .get-started a{
+.get-started,
+.get-started a {
   background-color: #07cf00;
   color: white;
   transition: var(--transition);
@@ -81,14 +82,21 @@ a::after {
   font-size: 1.125rem;
 }
 
-
+.calenders {
+  border: 3px solid purple;
+  /* margin: auto; */
+  align-self: start;
+  justify-self: start;
+  width: fit-content;
+  border-radius: 0.5em;
+}
 
 @media (max-width: 720px) {
   .menu {
-  display: none;
-}
+    display: none;
+  }
 
-.hamburger:hover .menu{
-  display: flex;
-}
+  .hamburger:hover .menu {
+    display: flex;
+  }
 }
